@@ -23,7 +23,7 @@
 
         #chat-window {
             height: 800px;
-            background: #ff655d;
+            background: #3d3d3d;
         }
 
         #chat-user-list {
@@ -47,6 +47,9 @@
             background: #737373;
             overflow-y: scroll;
             overflow-x: hidden;
+        }
+        #chat-message-box::-webkit-scrollbar{
+            display: none;
         }
 
         #chat-message-input-box {
@@ -86,22 +89,47 @@
             font-size: 20px;
 
         }
+        .user-list-info{
+            height: 50px;
+            padding: 3px 5px;
+            background: black;
+            border: 2px white solid;
+            border-radius: 5px;
+            margin-top: 2px;
+            color: white;
+            cursor: pointer;
+        }
+        .user-list-icon{
+
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+        }
+        .send-message-time,.receive-message-time{
+            text-align: center;
+        }
+        .send-message-icon,.receive-message-icon{
+            text-align: center;
+        }
+        .send-message-content,.receive-message-content{
+            word-wrap:break-word;
+            word-break:break-all;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            padding: 8px 10px;
+            box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.42);
+        }
+        .send-message-content{
+            background: green;
+        }
+        .receive-message-content{
+            background: white;
+        }
+        
 
     </style>
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-lg-1"
-             id="set-connect">
-            自己ID:<input
-                id="socket-id">
-            <button id="create-socket-connect">
-                建立连接
-            </button>
-        </div>
-    </div>
-</div>
 <div class="container">
     <div class="row">
         <div class="col-lg-8"
@@ -110,85 +138,9 @@
                  id="chat-window-title">
                 聊天中
             </div>
-            <div class="row"
-                 id="chat-message-box">
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
-                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+            <div class="row">
+                <div class="col-lg-12" id="chat-message-box">
+                </div>
             </div>
             <div class="row"
                  id="chat-message-input-box">
@@ -207,46 +159,88 @@
              id="chat-user-list">
             <div class="row"
                  id="chat-user-list-title"></div>
+            <div class="col-lg-12" id="chat-user-list-col">
+<!--                <div class="row user-list-info">-->
+<!--                    <div class="col-lg-4">yonghutoux</div>-->
+<!--                    <div class="col-lg-8">nicheng</div>-->
+<!--                </div>-->
+<!--                <div class="row user-list-info">-->
+<!--                    <div class="col-lg-4">yonghutoux</div>-->
+<!--                    <div class="col-lg-8">nicheng</div>-->
+<!--                </div>-->
+            </div>
 
         </div>
     </div>
 </div>
-<div></div>
-<div>
-    <input id="target-id">
-</div>
-<div id="message-received">
-    hahahahha
-</div>
-<div>
-    消息：<input
-        id="message-content">
-    <button id="send-message">
-        发送
-    </button>
-</div>
+
 </body>
 </html>
 <script>
     $(function () {
         createConnect()
-        $("#send-message").click(sendMessage)
-        $("#chat-message-box").scrollTop = $("#chat-message-box").scrollHeight
+        $("#send-chat-message-btn").click(sendMessage)
+        initDatas()
+        $("#chat-user-list-col").on("click",".user-list-info",setToUserId)
+        scrollToBottom()
+        $("#chat-message-box").change(scrollToBottom)
+        $(document).keydown(bindKeyBoard)
     })
     var socket;
 
+
+    function bindKeyBoard(e) {
+        if (e.keyCode==13){
+            if ($("#chat-message-content").val() == null || $("#chat-message-content").val() == "") {
+                alert("消息不能为空")
+                return
+            }
+            sendMessage()
+        }
+    }
+
+    function scrollToBottom() {
+       $("#chat-message-box").scrollTop(100000)
+
+    }
+
+    function setToUserId() {
+        var div=$(this)
+        var toUserId=div.attr("id");
+        div.css("background","gray")
+        div.siblings().css("background","black")
+        $("#chat-user-list-title").data("to",toUserId)
+    }
     function sendMessage() {
-        var targetId = $("#target-id").val()
-        var message = $("#message-content").val()
-        var url = "/socket/push/" + targetId + "/" + message
+        var targetId = $("#chat-user-list-title").data("to")
+        var fromId = $("#chat-user-list-title").data("from")
+        var message = $("#chat-message-content").val()
+        var url = "/socket/push/" + targetId + "/" + fromId+":"+message
         $.ajax({
             url: url,
             type: "post",
             dataType: "json",
             success: function (result) {
-                console.log(result)
             }
         })
+
+        
+        var sendMessage="<div class='row send-message'>\n" +
+            "            <div class='row send-message-time'>"+new Date().toLocaleString()+"</div>\n" +
+            "            <div class='row'>\n" +
+            "            <div class='col-lg-6 col-lg-offset-5'>\n" +
+            "            <div class='row send-message-content'>\n" +
+                message+
+            "        </div>\n" +
+            "        </div>\n" +
+            "        <div class='col-lg-1 send-message-icon'><img class='user-list-icon' src='/img/1.jpg'/> </div>\n" +
+            "            </div>\n" +
+            "            </div>"
+
+        $("#chat-message-box").append(sendMessage)
+        $("#chat-message-content").val("")
+        scrollToBottom()
+
     }
 
 
@@ -265,8 +259,10 @@
     }
 
     function createConnect() {
-        var socketId =uuid();
+        var socketId = uuid()
+
         $("#chat-user-list-title").data("from",socketId)
+        $("#chat-user-list-title").html("在线用户列表")
         if (typeof (WebSocket) == "undefined") {
             console.log("您的浏览器不支持WebSocket");
         } else {
@@ -281,9 +277,27 @@
             };
             //获得消息事件
             socket.onmessage = function (msg) {
-                console.log(msg)
-                console.log(msg.data);
-                $("#message-received").html(msg.data)
+                console.log(msg.data)
+                var content=$.parseJSON(msg.data);
+                $("#chat-user-list-title").data("to",msg.data.split(":")[0])
+
+                var receiveMessage="<div class='row receive-message'>\n" +
+                    "            <div class='row receive-message-time'>"+new Date().toLocaleString()+"</div>\n" +
+                    "            <div class='row'>\n" +
+                    "            <div class='col-lg-1 receive-message-icon'><img class='user-list-icon' src='/img/1.jpg'/> </div>\n" +
+                    "            <div class='col-lg-6'>\n" +
+                    "            <div class='row receive-message-content'>" +
+                    // msg.data.split(":")[1]+
+                    content.symbol+
+                    "        </div>\n" +
+                    "        </div>\n" +
+                    "        </div>\n" +
+                    "        </div>"
+                $("#chat-message-box").append(receiveMessage)
+                scrollToBottom()
+
+
+                initDatas()
                 //发现消息进入    开始处理前端触发逻辑
             };
             //关闭事件
@@ -297,5 +311,40 @@
             }
 
         }
+    }
+
+
+    function initDatas() {
+        setTimeout(function () {
+            var url="/socket/getUserList";
+            $.ajax({
+                url: url,
+                type: "get",
+                dataType: "json",
+                success: function (result) {
+                    setUserList(result.data)
+                }
+            })
+        },1000)
+    }
+    
+    function setUserList(users) {
+        var selfId=$("#chat-user-list-title").data("from");
+        $("#chat-user-list-col").empty()
+        $.each(users,function (index,item) {
+            var a="<div class='row user-list-info' id='"+item+"'>" +
+                "            <div class='col-lg-4'><img class='user-list-icon' src='/img/1.jpg'/> </div>" +
+                "            <div class='col-lg-8'>"+item.substring(24)+"</div>" +
+                "            </div>"
+            if (selfId!=item) {
+                $("#chat-user-list-col").append(a)
+            }
+        })
+
+        var id=$("#chat-user-list-title").data("to")
+        // var div = $("#"+id)
+        // div.css("background","gray")
+        // div.siblings().css("background","black")
+        
     }
 </script>

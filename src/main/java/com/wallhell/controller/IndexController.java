@@ -7,6 +7,10 @@
 
 package com.wallhell.controller;
 
+import com.fxcm.external.api.transport.GatewayFactory;
+import com.fxcm.external.api.transport.IGateway;
+import com.fxcm.external.api.transport.listeners.IGenericMessageListener;
+import com.fxcm.messaging.ITransportable;
 import com.wallhell.common.entity.UserEntity;
 import com.wallhell.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -22,10 +26,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.IOException;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
@@ -62,18 +62,7 @@ public class IndexController {
         return "index";
     }
     @RequestMapping("/login")
-    public String login() throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.jdbc.Driver");
-        java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://118.190.156.52:3306/travel?characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&allowMultiQueries=true", "root", "DuoChuangMysql1@");
-        PreparedStatement show_tables = connection.prepareStatement("select * from user_info");
-        ResultSet resultSet = show_tables.executeQuery();
-        while (resultSet.next()){
-            System.out.println(resultSet.getString(1));
-            System.out.println(resultSet.getString(2));
-            System.out.println(resultSet.getString(3));
-        }
-
-
+    public String login(){
         return "login";
     }
 
