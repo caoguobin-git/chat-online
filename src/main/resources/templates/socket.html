@@ -1,0 +1,301 @@
+<!DOCTYPE HTML>
+<!--suppress ALL-->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>
+        hello</title>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <script src="/js/jquery-3.4.1.js"></script>
+    <style>
+        #message-received {
+            width: 300px;
+            height: 50px;
+            background: #ff0504;
+        }
+
+        #set-connect {
+            width: 300px;
+            height: 80px;
+            background: blue;
+        }
+
+        #chat-window {
+            height: 800px;
+            background: #ff655d;
+        }
+
+        #chat-user-list {
+            height: 600px;
+            background: #778cff;
+        }
+
+        #chat-window-title {
+            height: 50px;
+            text-align: center;
+            font-size: 30px;
+            font-weight: bolder;
+            font-family: kaiti;
+            color: white;
+            padding-top: 5px;
+            background: black;
+        }
+
+        #chat-message-box {
+            height: 690px;
+            background: #737373;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+
+        #chat-message-input-box {
+            text-align: center;
+            padding-top: 10px;
+        }
+
+        #chat-message-content {
+            width: 90%;
+            height: 40px;
+        }
+
+        #send-chat-message-btn {
+            width: 60%;
+            height: 30px;
+            margin-top: 5px;
+            margin-left: -10px;
+            border-radius: 3px;
+            color: white;
+            border: 1px solid blue;
+            background: blue;
+            font-size: 14px;
+            animation: hover linear 1s;
+
+
+        }
+
+        #send-chat-message-btn:hover {
+            font-size: 15px;
+            font-weight: bolder;
+        }
+
+        #chat-user-list-title {
+            height: 40px;
+            background: #77fff5;
+            text-align: center;
+            font-size: 20px;
+
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-1"
+             id="set-connect">
+            自己ID:<input
+                id="socket-id">
+            <button id="create-socket-connect">
+                建立连接
+            </button>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8"
+             id="chat-window">
+            <div class="row"
+                 id="chat-window-title">
+                聊天中
+            </div>
+            <div class="row"
+                 id="chat-message-box">
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+                聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容\n
+            </div>
+            <div class="row"
+                 id="chat-message-input-box">
+                <div class="col-lg-9">
+                    <input id="chat-message-content">
+                </div>
+                <div class="col-lg-3">
+                    <button id="send-chat-message-btn">
+                        发&nbsp&nbsp&nbsp&nbsp送
+                    </button>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-lg-3 col-lg-offset-1"
+             id="chat-user-list">
+            <div class="row"
+                 id="chat-user-list-title"></div>
+
+        </div>
+    </div>
+</div>
+<div></div>
+<div>
+    <input id="target-id">
+</div>
+<div id="message-received">
+    hahahahha
+</div>
+<div>
+    消息：<input
+        id="message-content">
+    <button id="send-message">
+        发送
+    </button>
+</div>
+</body>
+</html>
+<script>
+    $(function () {
+        createConnect()
+        $("#send-message").click(sendMessage)
+        $("#chat-message-box").scrollTop = $("#chat-message-box").scrollHeight
+    })
+    var socket;
+
+    function sendMessage() {
+        var targetId = $("#target-id").val()
+        var message = $("#message-content").val()
+        var url = "/socket/push/" + targetId + "/" + message
+        $.ajax({
+            url: url,
+            type: "post",
+            dataType: "json",
+            success: function (result) {
+                console.log(result)
+            }
+        })
+    }
+
+
+    function uuid() {
+        var s = [];
+        var hexDigits = "0123456789abcdef";
+        for (var i = 0; i < 36; i++) {
+            s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+        }
+        s[14] = "4";  // bits 12-15 of the time_hi_and_version field to 0010
+        s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1);  // bits 6-7 of the clock_seq_hi_and_reserved to 01
+        s[8] = s[13] = s[18] = s[23] = "-";
+
+        var uuid = s.join("");
+        return uuid;
+    }
+
+    function createConnect() {
+        var socketId =uuid();
+        $("#chat-user-list-title").data("from",socketId)
+        if (typeof (WebSocket) == "undefined") {
+            console.log("您的浏览器不支持WebSocket");
+        } else {
+            console.log("您的浏览器支持WebSocket");
+            //实现化WebSocket对象，指定要连接的服务器地址与端口  建立连接
+            //等同于socket = new WebSocket("ws://localhost:8083/checkcentersys/websocket/20");
+            socket = new WebSocket("ws://localhost:8088/websocket/" + socketId);
+            //打开事件
+            socket.onopen = function () {
+                console.log("Socket " + socketId + "已打开");
+                //socket.send("这是来自客户端的消息" + location.href + new Date());
+            };
+            //获得消息事件
+            socket.onmessage = function (msg) {
+                console.log(msg)
+                console.log(msg.data);
+                $("#message-received").html(msg.data)
+                //发现消息进入    开始处理前端触发逻辑
+            };
+            //关闭事件
+            socket.onclose = function () {
+                console.log("Socket已关闭");
+            };
+            //发生了错误事件
+            socket.onerror = function () {
+                alert("Socket发生了错误");
+                //此时可以尝试刷新页面
+            }
+
+        }
+    }
+</script>
